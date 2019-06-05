@@ -55,6 +55,7 @@ namespace SimpleBotCore.Controllers
         // Responde mensagens usando o Bot Framework Connector
         async Task ReplyUserAsync(Activity message, string text)
         {
+            var a = 1;
             var connector = new ConnectorClient(new Uri(message.ServiceUrl));
             var reply = message.CreateReply(text);
 
