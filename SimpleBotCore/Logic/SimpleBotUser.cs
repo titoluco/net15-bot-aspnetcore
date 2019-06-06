@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MongoDB.Driver;
+using MongoDB.Bson;
 
 namespace SimpleBotCore.Logic
 {
@@ -9,7 +11,20 @@ namespace SimpleBotCore.Logic
     {
         public string Reply(SimpleMessage message)
         {
-            return $"{message.User} disse '{message.Text}'";
+            
+            SimpleDB.Iniciar();
+            int qtdMsg = 0;
+            
+            SimpleDB.createDoc2(message.Id, qtdMsg++);
+            /*
+            var filter = Builders<SimpleLog>.Filter.Eq("user", message.User);
+            //var results = SimpleDB.col.Find(filter).ToList();
+
+
+            SimpleDB.createDoc2(message.User, qtdMsg++);
+            */
+
+            return $"{message.User} disse '{message.Text}' ({qtdMsg-1})";
         }
 
     }
