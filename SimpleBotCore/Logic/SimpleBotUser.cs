@@ -12,19 +12,12 @@ namespace SimpleBotCore.Logic
         public string Reply(SimpleMessage message)
         {
             
-            SimpleDB.Iniciar();
-            int qtdMsg = 0;
-            
-            SimpleDB.createDoc2(message.Id, qtdMsg++);
-            /*
-            var filter = Builders<SimpleLog>.Filter.Eq("user", message.User);
-            //var results = SimpleDB.col.Find(filter).ToList();
+            //SimpleDB.Iniciar();
 
+            int a = SimpleDB.getDoc(message.Id);
+            SimpleDB.createDoc2(message);
 
-            SimpleDB.createDoc2(message.User, qtdMsg++);
-            */
-
-            return $"{message.User} disse '{message.Text}' ({qtdMsg-1})";
+            return $"{message.User} disse '{message.Text}' ({a+1})";
         }
 
     }

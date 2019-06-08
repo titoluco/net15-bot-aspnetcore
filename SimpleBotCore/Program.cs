@@ -17,6 +17,7 @@ namespace SimpleBotCore
     {
         public static void Main(string[] args)
         {
+            SimpleDB.Iniciar();
             /*
             var client = new MongoClient("mongodb://localhost:27017");
 
@@ -32,7 +33,7 @@ namespace SimpleBotCore
                                { "num", i }
                            };
             col.InsertMany(docArray);
-            */            
+            */
 
             BuildWebHost(args).Run();
         }
