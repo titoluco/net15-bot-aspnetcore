@@ -25,6 +25,10 @@ namespace SimpleBotCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<SimpleBotUser>();
+            SimpleDB.ConnectionString = Configuration.GetSection("ConnectionStrings:ConnectionString").Value;
+            SimpleDB.Banco = Configuration.GetSection("ConnectionStrings:Banco").Value;
+            SimpleDB.Collection = Configuration.GetSection("ConnectionStrings:Collection").Value;
+            SimpleDB.Iniciar();
             services.AddMvc();
         }
 

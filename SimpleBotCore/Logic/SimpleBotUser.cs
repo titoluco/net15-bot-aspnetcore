@@ -11,13 +11,11 @@ namespace SimpleBotCore.Logic
     {
         public string Reply(SimpleMessage message)
         {
-            
-            //SimpleDB.Iniciar();
+            int qtd = SimpleDB.getDoc(message.Id);
+            SimpleDB.createDoc(message);
+            string retorno = $"{message.User} disse '{message.Text}' ({qtd + 1} {(qtd == 0 ? " mensagem enviada" : " mensagens enviadas")})";
 
-            int a = SimpleDB.getDoc(message.Id);
-            SimpleDB.createDoc2(message);
-
-            return $"{message.User} disse '{message.Text}' ({a+1})";
+            return retorno;
         }
 
     }
